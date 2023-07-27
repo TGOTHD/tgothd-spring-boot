@@ -1,0 +1,37 @@
+server:
+  servlet:
+    context-path: /tgothd
+  port: 8080
+  error:
+    include-message: always
+    include-exception: true
+spring:
+  devtools:
+    restart:
+      enabled: true
+  # 配置文件上传大小限制
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/tgothd?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: tgothd
+    password: tgothd
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  messages:
+    encoding: utf-8
+    basename: i18n.index,i18n.login,i18n.logout
+    fallback-to-system-locale: false
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+pagehelper:
+  helper-dialect: mysql
+  params: count=countSql
+  reasonable: true
+  support-methods-arguments: true
+minio:
+  endpoint: http://localhost:9000
+  accessKey: admin
+  secretKey: password
+  bucketName: "tgothd"
